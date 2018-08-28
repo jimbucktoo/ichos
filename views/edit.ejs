@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <title>edit</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" type="text/css" href="/materialize.min.css" media="screen,projection">
-  <link rel="stylesheet" type="text/css" href="/app.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  </head>
+
+<head>
+    <title>edit</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/materialize.min.css" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+
 <body class="white">
-  <div class="row">
-    <nav>
-    <div class="nav-wrapper navbar z-depth-2">
-    <a href="/ichos" class="brand-logo overflow"><i class="large material-icons" width="30px">settings</i>ichos</a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#" class="waves-effect waves-light btn secondaryGoal z-depth-0"><i class="material-icons left">person</i>My Account</a></li>
-    </ul>
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper navbar z-depth-2">
+                <a href="/ichos" class="brand-logo overflow"><i class="large material-icons" width="30px">settings</i>ichos</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#" class="waves-effect waves-light btn secondaryGoal z-depth-0"><i class="material-icons left">person</i>My Account</a></li>
+                </ul>
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-demo">
+            <li class="navy white-text sidenavtitle">ichos</li>
+            <li><a href="#">Get Started</a></li>
+            <li><a href="#">Log In</a></li>
+        </ul>
+        <br>
+        <br>
+        <br>
+        <center>
+            <div class="container">
+                <form action="/ichos/<%= ichosobject._id %>?_method=PUT" method="POST">
+                    <input type="text" name="ichosObject[title]" value="<%= ichosobject.title %>" placeholder="Enter Title">
+                    <br>
+                    <input type="text" name="ichosObject[content]" value="<%= ichosobject.content %>" placeholder="Enter Content">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <button class="btn primaryGoal" type="submit" name="action">Edit
+                        <i class="material-icons left">edit</i>
+                    </button>
+                </form>
+            </div>
+        </center>
     </div>
-    </nav>
-    <ul class="sidenav" id="mobile-demo">
-    <li class="navy white-text sidenavtitle">ichos</li>
-    <li><a href="#">Get Started</a></li>
-    <li><a href="#">Log In</a></li>
-    </ul>
-
-    <br><br><br>
-    <center>
-    <div class="container">
-    <form action="/ichos/<%= ichosobject._id %>?_method=PUT" method="POST">
-      <input type="text" name="ichosObject[title]" value="<%= ichosobject.title %>" placeholder="Enter Title">
-      <br>
-      <input type="text" name="ichosObject[content]" value="<%= ichosobject.content %>" placeholder="Enter Content">
-      <br>
-      <br><br><br>
-      <button class="btn primaryGoal" type="submit" name="action">Edit
-      <i class="material-icons left">edit</i>
-      </button>
-    </form>
-	</div>
-    </center>
-  </div>
-
-  <script type="text/javascript" src="/materialize.min.js"></script>
-
+    <script type="text/javascript" src="/materialize.min.js"></script>
 </body>
-</html>
 
+</html>

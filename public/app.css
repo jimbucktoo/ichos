@@ -1,82 +1,82 @@
 body {
-	background-color: white;
+    background-color: white;
 }
 
 input {
-  text-align: center;
+    text-align: center;
 }
 
 .navbar {
-	background-color: #2F3C5F;
+    background-color: #2F3C5F;
 }
 
-.brand-logo{
-	margin-left: 1%;
+.brand-logo {
+    margin-left: 1%;
 }
 
 .pointer {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .tableContainer {
-	border: 1px solid black;
-	border-radius: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .primaryGoal {
-	background-color: #3B8DE1;
+    background-color: #3B8DE1;
 }
 
 .secondaryGoal {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 .tertiaryGoal {
-	background-color: #3B8DE1;
+    background-color: #3B8DE1;
 }
 
 .delete {
-	background-color: red;
+    background-color: red;
 }
 
 .primaryGoal:hover {
-	color: #3B8DE1;
-	background-color: white;
+    color: #3B8DE1;
+    background-color: white;
 }
 
 .secondaryGoal:hover {
-	color: #2F3C5F;
-	background-color: white;
+    color: #2F3C5F;
+    background-color: white;
 }
 
 .tertiaryGoal:hover {
-	color: #3B8DE1;
-	background-color: white;
+    color: #3B8DE1;
+    background-color: white;
 }
 
 .delete:hover {
-	color: red;
-	background-color: white;
-	border: 1px solid red;
+    color: red;
+    background-color: white;
+    border: 1px solid red;
 }
 
 .primaryGoal:focus {
-	background-color: #3B8DE1;
-	color: white;
+    background-color: #3B8DE1;
+    color: white;
 }
 
 .secondaryGoal:focus {
-	background-color: transparent;
-	color: white;
+    background-color: transparent;
+    color: white;
 }
 
 .tertiaryGoal:focus {
-	background-color: #3B8DE1;
-	color: white;
+    background-color: #3B8DE1;
+    color: white;
 }
 
 .delete:focus {
-	background-color: red;
-	color: white;
-	border: 1px solid red;
+    background-color: red;
+    color: white;
+    border: 1px solid red;
 }
