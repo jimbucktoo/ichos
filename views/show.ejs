@@ -1,52 +1,57 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>show</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/materialize.min.css" media="screen,projection">
-    <link rel="stylesheet" type="text/css" href="/app.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-</head>
+    <head>
+        <title>show</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="/materialize.min.css" media="screen,projection">
+        <link rel="stylesheet" type="text/css" href="/app.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    </head>
 
-<body>
-    <nav>
-        <div class="navbar nav-wrapper">
-            <a href="/ichos" class="brand-logo"><i class="material-icons left">settings</i>ichos</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#" class="waves-effect waves-light btn primaryGoal"><i class="material-icons left">list</i>Feed</a></li>
-                <li><a href="#" class="waves-effect waves-light btn secondaryGoal z-depth-0"><i class="material-icons left">person</i>My Account</a></li>
-            </ul>
-        </div>
-    </nav>
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">Feed</a></li>
-        <li><a href="#">My Account</a></li>
-    </ul>
-    <br>
-    <br>
-    <br>
-    <center>
-        <%= ichosobject._id %>
-    </center>
-    <br>
-    <center><b>Title:</b>
-        <%= ichosobject.title %>
-    </center>
-    <center><b>Content:</b>
-        <%= ichosobject.content %>
-    </center>
-    <br>
-    <center>
-        <a href="/ichos/<%= ichosobject._id %>/edit" class="btn primaryGoal"><i class="material-icons left">edit</i>Edit</a>
-        <form action="/ichos/<%= ichosobject._id %>?_method=DELETE" method="POST">
+    <body>
+        <nav>
+            <div class="navbar nav-wrapper">
+                <a href="/ichos" class="brand-logo"><i class="material-icons left">settings</i>ichos</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#" class="waves-effect waves-light btn primaryGoal"><i class="material-icons left">list</i>Feed</a></li>
+                    <li><a href="#" class="waves-effect waves-light btn secondaryGoal z-depth-0"><i class="material-icons left">person</i>My Account</a></li>
+                </ul>
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="#">Feed</a></li>
+            <li><a href="#">My Account</a></li>
+        </ul>
+        <br>
+        <br>
+        <br>
+        <center>
+            <%= ichosobject._id %>
+        </center>
+        <br>
+        <center><b>Title:</b>
+            <%= ichosobject.title %>
+        </center>
+        <center><b>Content:</b>
+            <%= ichosobject.content %>
+        </center>
+        <br>
+        <center>
+            <a href="/ichos/<%= ichosobject._id %>/edit" class="btn primaryGoal"><i class="material-icons left">edit</i>Edit</a>
+            <form action="/ichos/<%= ichosobject._id %>?_method=DELETE" method="POST">
+                <br>
+                <button class="action-btn waves-effect waves-light btn delete"><i class="material-icons left">delete</i>Delete</button>
+            </form>
+        </center>
+
+        <center>
             <br>
-            <button class="action-btn waves-effect waves-light btn delete"><i class="material-icons left">delete</i>Delete</button>
-        </form>
-    </center>
-    <script type="text/javascript" src="/materialize.min.js"></script>
-</body>
+            <a href="/logout">Log Out</a>
+        </center>
+        <script type="text/javascript" src="/materialize.min.js"></script>
+    </body>
 
 </html>

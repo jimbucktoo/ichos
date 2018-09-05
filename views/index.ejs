@@ -1,117 +1,125 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>ichos</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/materialize.min.css" media="screen,projection">
-    <link rel="stylesheet" type="text/css" href="/app.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-</head>
+    <head>
+        <title>ichos</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="/materialize.min.css" media="screen,projection">
+        <link rel="stylesheet" type="text/css" href="/app.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    </head>
 
-<body>
-    <nav>
-        <div class="navbar nav-wrapper">
-            <a href="/ichos" class="brand-logo"><i class="material-icons left">settings</i>ichos</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#" class="waves-effect waves-light btn primaryGoal"><i class="material-icons left">list</i>Feed</a></li>
-                <li><a href="#" class="waves-effect waves-light btn secondaryGoal z-depth-0"><i class="material-icons left">person</i>My Account</a></li>
-            </ul>
+    <body>
+        <nav>
+            <div class="navbar nav-wrapper">
+                <a href="/ichos" class="brand-logo"><i class="material-icons left">settings</i>ichos</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#" class="waves-effect waves-light btn primaryGoal"><i class="material-icons left">list</i>Feed</a></li>
+                    <li><a href="#" class="waves-effect waves-light btn secondaryGoal z-depth-0"><i class="material-icons left">person</i>My Account</a></li>
+                </ul>
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="#">Feed</a></li>
+            <li><a href="#">My Account</a></li>
+        </ul>
+        <br>
+        <br>
+        <br>
+        <center>
+            <h3>/ichos/</h3></center>
+        <br>
+        <center><img id="img64" src="" height="300" width="300"></center>
+        <br>
+        <div class="container tableContainer">
+            <table class="centered highlight responsive-table" id="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody"></tbody>
+            </table>
         </div>
-    </nav>
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">Feed</a></li>
-        <li><a href="#">My Account</a></li>
-    </ul>
-    <br>
-    <br>
-    <br>
-    <center>
-        <h3>/ichos/</h3></center>
-    <br>
-    <center><img id="img64" src="" height="300" width="300"></center>
-    <br>
-    <div class="container tableContainer">
-        <table class="centered highlight responsive-table" id="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Content</th>
-                </tr>
-            </thead>
-            <tbody id="tablebody"></tbody>
-        </table>
-    </div>
-    <br>
-    <br>
-    <br>
-    <center><a href="/ichos/new" class="waves-effect waves-light btn primaryGoal">Create Post</a></center>
-    <br>
-    <center><a href="/remove/all" class="waves-effect waves-light btn delete">Delete All</a></center>
-    <br>
-    <script type="text/javascript" src="/materialize.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('.sidenav').sidenav();
+        <br>
+        <br>
+        <br>
+        <center><a href="/ichos/new" class="waves-effect waves-light btn primaryGoal">Create Post</a></center>
+        <br>
+        <center><a href="/remove/all" class="waves-effect waves-light btn delete">Delete All</a></center>
+        <br>
+        <br>
+        <br>
+        <center>
+            <a href="/logout">Log Out</a>
+        </center>
+        <br>
+        <br>
+        <br>
+        <script type="text/javascript" src="/materialize.min.js"></script>
+        <script type="text/javascript">
+$(document).ready(function() {
+    $('.sidenav').sidenav();
 
-        var idarrays = "<%= idArray %>";
-        var titlearrays = "<%= titleArray %>";
-        var contentarrays = "<%= contentArray %>";
-        var imagearrays = "<%= imageData %>";
-        var tbody = document.getElementById("tablebody");
-        console.log(imagearrays);
+    var idarrays = "<%= idArray %>";
+    var titlearrays = "<%= titleArray %>";
+    var contentarrays = "<%= contentArray %>";
+    var imagearrays = "<%= imageData %>";
+    var tbody = document.getElementById("tablebody");
+    console.log(imagearrays);
 
-        if (imagearrays == "") {
-            console.log("No image in database.");
-            document.getElementById('img64')
-                .setAttribute(
-                    'src', 'blackimg.png'
-                );
-        } else {
-            document.getElementById('img64')
-                .setAttribute(
-                    'src', 'data:image/png;base64,' + imagearrays
-                );
-        }
+    if (imagearrays == "") {
+    console.log("No image in database.");
+    document.getElementById('img64')
+        .setAttribute(
+    'src', 'blackimg.png'
+);
+} else {
+    document.getElementById('img64')
+        .setAttribute(
+    'src', 'data:image/png;base64,' + imagearrays
+);
+}
 
-        var idarray = idarrays.split(",");
-        var titlearray = titlearrays.split(",");
-        var contentarray = contentarrays.split(",");
+    var idarray = idarrays.split(",");
+    var titlearray = titlearrays.split(",");
+    var contentarray = contentarrays.split(",");
 
-        for (var i = 0; i < idarray.length; i++) {
-            var tr = document.createElement("TR");
-            var td1 = document.createElement("TD");
-            var td2 = document.createElement("TD");
-            var td3 = document.createElement("TD");
-            td1.setAttribute('class', idarray[i]);
-            td2.setAttribute('class', idarray[i]);
-            td3.setAttribute('class', idarray[i]);
-            td1.classList.add("pointer");
-            td2.classList.add("pointer");
-            td3.classList.add("pointer");
-            var idnode = document.createTextNode(idarray[i]);
-            var titlenode = document.createTextNode(titlearray[i]);
-            var contentnode = document.createTextNode(contentarray[i]);
-            td1.appendChild(idnode);
-            td2.appendChild(titlenode);
-            td3.appendChild(contentnode);
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            tr.appendChild(td3);
-            tbody.appendChild(tr);
-        }
+    for (var i = 0; i < idarray.length; i++) {
+    var tr = document.createElement("TR");
+    var td1 = document.createElement("TD");
+    var td2 = document.createElement("TD");
+    var td3 = document.createElement("TD");
+    td1.setAttribute('class', idarray[i]);
+    td2.setAttribute('class', idarray[i]);
+    td3.setAttribute('class', idarray[i]);
+    td1.classList.add("pointer");
+    td2.classList.add("pointer");
+    td3.classList.add("pointer");
+    var idnode = document.createTextNode(idarray[i]);
+    var titlenode = document.createTextNode(titlearray[i]);
+    var contentnode = document.createTextNode(contentarray[i]);
+    td1.appendChild(idnode);
+    td2.appendChild(titlenode);
+    td3.appendChild(contentnode);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tbody.appendChild(tr);
+}
 
-        $("tr").click(function(event) {
-            console.log(event.target.className);
-            var trClassName = event.target.className;
-            var trclass = trClassName.replace(' pointer', '');
-            window.location = "/ichos/" + trclass;
-        });
-    });
-    </script>
-</body>
+    $("tr").click(function(event) {
+    console.log(event.target.className);
+    var trClassName = event.target.className;
+    var trclass = trClassName.replace(' pointer', '');
+    window.location = "/ichos/" + trclass;
+});
+});
+        </script>
+    </body>
 
 </html>
