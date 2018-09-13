@@ -62,63 +62,65 @@
         <br>
         <script type="text/javascript" src="/materialize.min.js"></script>
         <script type="text/javascript">
-$(document).ready(function() {
-    $('.sidenav').sidenav();
+            $(document).ready(function() {
+                $('.sidenav').sidenav();
 
-    var idarrays = "<%= idArray %>";
-    var titlearrays = "<%= titleArray %>";
-    var contentarrays = "<%= contentArray %>";
-    var imagearrays = "<%= imageData %>";
-    var tbody = document.getElementById("tablebody");
-    console.log(imagearrays);
+                var idarrays = "<%= idArray %>";
+                var titlearrays = "<%= titleArray %>";
+                var contentarrays = "<%= contentArray %>";
+                var imagearrays = "<%= imageData %>";
+                var imageidarrays = "<%= imageID %>";
+                var tbody = document.getElementById("tablebody");
 
-    if (imagearrays == "") {
-    console.log("No image in database.");
-    document.getElementById('img64')
-        .setAttribute(
-    'src', 'blackimg.png'
-);
-} else {
-    document.getElementById('img64')
-        .setAttribute(
-    'src', 'data:image/png;base64,' + imagearrays
-);
-}
+                var idarray = idarrays.split(",");
+                var titlearray = titlearrays.split(",");
+                var contentarray = contentarrays.split(",");
+                var imagearray = imagearrays.split(",");
+                var imageidarray = imageidarrays.split(",");
 
-    var idarray = idarrays.split(",");
-    var titlearray = titlearrays.split(",");
-    var contentarray = contentarrays.split(",");
+                for (var i = 0; i < idarray.length; i++) {
+                    if (imagearrays == "") {
+                        console.log("No image in database.");
+                        document.getElementById('img64')
+                            .setAttribute(
+                                'src', 'blackimg.png'
+                            );
+                    } else {
+                        document.getElementById('img64')
+                            .setAttribute(
+                                'src', 'data:image/png;base64,' + imagearray[i]
+                            );
+                        console.log(imageidarray[i]);
+                    }
+                    var tr = document.createElement("TR");
+                    var td1 = document.createElement("TD");
+                    var td2 = document.createElement("TD");
+                    var td3 = document.createElement("TD");
+                    td1.setAttribute('class', idarray[i]);
+                    td2.setAttribute('class', idarray[i]);
+                    td3.setAttribute('class', idarray[i]);
+                    td1.classList.add("pointer");
+                    td2.classList.add("pointer");
+                    td3.classList.add("pointer");
+                    var idnode = document.createTextNode(idarray[i]);
+                    var titlenode = document.createTextNode(titlearray[i]);
+                    var contentnode = document.createTextNode(contentarray[i]);
+                    td1.appendChild(idnode);
+                    td2.appendChild(titlenode);
+                    td3.appendChild(contentnode);
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    tr.appendChild(td3);
+                    tbody.appendChild(tr);
+                }
 
-    for (var i = 0; i < idarray.length; i++) {
-    var tr = document.createElement("TR");
-    var td1 = document.createElement("TD");
-    var td2 = document.createElement("TD");
-    var td3 = document.createElement("TD");
-    td1.setAttribute('class', idarray[i]);
-    td2.setAttribute('class', idarray[i]);
-    td3.setAttribute('class', idarray[i]);
-    td1.classList.add("pointer");
-    td2.classList.add("pointer");
-    td3.classList.add("pointer");
-    var idnode = document.createTextNode(idarray[i]);
-    var titlenode = document.createTextNode(titlearray[i]);
-    var contentnode = document.createTextNode(contentarray[i]);
-    td1.appendChild(idnode);
-    td2.appendChild(titlenode);
-    td3.appendChild(contentnode);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-    tr.appendChild(td3);
-    tbody.appendChild(tr);
-}
-
-    $("tr").click(function(event) {
-    console.log(event.target.className);
-    var trClassName = event.target.className;
-    var trclass = trClassName.replace(' pointer', '');
-    window.location = "/ichos/" + trclass;
-});
-});
+                $("tr").click(function(event) {
+                    console.log(event.target.className);
+                    var trClassName = event.target.className;
+                    var trclass = trClassName.replace(' pointer', '');
+                    window.location = "/ichos/" + trclass;
+                });
+            });
         </script>
     </body>
 

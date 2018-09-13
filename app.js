@@ -88,7 +88,6 @@ var currentUser = "";
 
 function isLoggedIn(req, res, next){
     if (req.isAuthenticated()){
-        console.log(req.user);
         console.log(req.user.username);
         currentUser = req.user.username
         return next();
@@ -111,16 +110,16 @@ app.get("/ichos", isLoggedIn, function(req, res) {
             var idArray = [];
             var titleArray = [];
             var contentArray = [];
-
+            var imageidArray = [];
             var findByIDRequests = [];
 
             mongoObject.forEach(function(element) {
                 idArray.push(element._id);
                 titleArray.push(element.title);
                 contentArray.push(element.content);
+                imageidArray.push(element.image); 
                 var request = new Promise(function(resolve, reject) {
                     Image.findById(element.image, function(err, imageObj) {
-                        console.log(JSON.stringify(imageObj.data));
                         if (err) {
                             reject(err);
                         } else {
@@ -132,8 +131,7 @@ app.get("/ichos", isLoggedIn, function(req, res) {
                 findByIDRequests.push(request);
             });
             Promise.all(findByIDRequests).then(function(data) {
-                console.log(data);
-                res.render("index.ejs", { idArray: idArray, titleArray: titleArray, contentArray: contentArray, imageData: data });
+                res.render("index.ejs", { idArray: idArray, titleArray: titleArray, contentArray: contentArray, imageData: data, imageID: imageidArray });
             }).catch(function(err) {
                 console.log(err);
             });
