@@ -1,6 +1,6 @@
 # ichos
 
-ichos is an ongoing project I developed to that acts as a repository that stores my new skills and technologies as I learn them in an all-in-one project.
+ichos is an ongoing project/repository I created that stores my new skills and technologies as I learn them in an all-in-one project.
 
 ## Technologies
 
