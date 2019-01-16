@@ -14,5 +14,4 @@ ichos is an ongoing project/repository I created that stores my new skills and t
 
 ## Authors
 
-* **James Liang** - *Initial work* - [jimbucktoo](https://github.com/jimbucktoo/jimbucktoo)
-
+* **James Liang** - *Initial work* - [jimbucktoo](https://github.com/jimbucktoo/)
